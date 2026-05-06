@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b54sp53vntr8f"]
+
+[ext_resource type="Script" uid="uid://c5o2hekyf8pfo" path="res://Scripts/help_screen.gd" id="1_ag0tr"]
+[ext_resource type="Texture2D" uid="uid://cg87t1sjbhgej" path="res://assets/button.png" id="2_7iiir"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_i44y6"]
+
+[node name="HelpScreen" type="Node" unique_id=735013264]
+script = ExtResource("1_ag0tr")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=590613710]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_i44y6")
+
+[node name="StartButton" type="TextureButton" parent="." unique_id=1297313844]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -64.0
+offset_right = 102.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+texture_normal = ExtResource("2_7iiir")
+
+[node name="start" type="Label" parent="StartButton" unique_id=999166058]
+layout_mode = 0
+offset_right = 205.0
+offset_bottom = 64.0
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://nt111bjcsdi1"]
+
+[ext_resource type="Script" uid="uid://blxk2ghyolk25" path="res://Scripts/end_screen.gd" id="1_2ohhu"]
+[ext_resource type="Texture2D" uid="uid://cg87t1sjbhgej" path="res://assets/button.png" id="1_gcms0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2ohhu"]
+
+[node name="End" type="Node" unique_id=1221203061]
+script = ExtResource("1_2ohhu")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=82124143]
+self_modulate = Color(0.87058824, 1, 1, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_2ohhu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1456079122]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -100.0
+offset_right = 102.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer" unique_id=1518104757]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_gcms0")
+
+[node name="start" type="Label" parent="VBoxContainer/StartButton" unique_id=1759352617]
+layout_mode = 0
+offset_right = 205.0
+offset_bottom = 64.0
+text = "Main"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpButton" type="TextureButton" parent="VBoxContainer" unique_id=1091703212]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_gcms0")
+
+[node name="Help" type="Label" parent="VBoxContainer/HelpButton" unique_id=62753431]
+layout_mode = 0
+offset_right = 204.0
+offset_bottom = 65.0
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndButton" type="TextureButton" parent="VBoxContainer" unique_id=1046629245]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_gcms0")
+
+[node name="End" type="Label" parent="VBoxContainer/EndButton" unique_id=2129156412]
+layout_mode = 0
+offset_right = 204.0
+offset_bottom = 65.0
+text = "End"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=335377979]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -64.0
+offset_right = 310.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/EndButton" to="." method="_on_end_button_pressed"]
