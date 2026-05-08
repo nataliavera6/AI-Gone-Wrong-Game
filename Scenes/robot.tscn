@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dmht7qv6i78vv"]
+
+[ext_resource type="Script" uid="uid://c4q8iehm0w0bj" path="res://Scenes/robot.gd" id="1_2vrla"]
+[ext_resource type="Texture2D" uid="uid://dxleeh46p5eg1" path="res://assets/soldier_vs_robot_itchio/robot_ichio_png/itchio_full_frames_robot.png" id="1_lp65t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6phhs"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(57, 8, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwnub"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(71, 8, 14, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ntbue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6phhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwnub")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3wgy"]
+radius = 6.0
+
+[node name="robot" type="CharacterBody2D" unique_id=85647776]
+script = ExtResource("1_2vrla")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1702651121]
+sprite_frames = SubResource("SpriteFrames_ntbue")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1609797787]
+shape = SubResource("CircleShape2D_x3wgy")
