@@ -40,25 +40,54 @@ func _process(delta: float) -> void:
 		pass
 	Global.Score=11
 	count+=1
+
+
 func Robot_mad(score):
-	
-	$CanvasLayer.visible=true
-	#await get_tree().create_timer(0.5).timeout
-	get_tree().paused = true
+	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+
+	tween.parallel().tween_property($robot, "scale", Vector2(20, 20), 0.5)
+	tween.parallel().tween_property($Player, "scale", Vector2(14, 14), 0.5)
+
+	$CanvasLayer.visible = true
+
+	$CanvasLayer.process_mode = Node.PROCESS_MODE_ALWAYS
+	$CanvasLayer2.process_mode = Node.PROCESS_MODE_ALWAYS
 	$dialogue_box.process_mode = Node.PROCESS_MODE_ALWAYS
-	#print("robot mad")
-	if score==5:
+
+	get_tree().paused = true
+
+	if score == 5:
 		$dialogue_box.start_dialogue("Robot: Human is winning")
-	elif score==6:
+	elif score == 6:
 		$dialogue_box.start_dialogue("Robot: Human capacity is low, robot must win")
-	elif score==7:
-		$CanvasLayer2.visible=true
-		$CanvasLayer.visible=false
+	elif score == 7:
+		$CanvasLayer2.visible = true
+		$CanvasLayer.visible = false
 		$dialogue_box.start_dialogue("Robot: Unexpected output from human...EXTERMINATE")
-		
-		
-	
+
+	await get_tree().create_timer(2).timeout
+	$CanvasLayer.visible = false
+	$CanvasLayer2.visible = false
+	var tween2 = create_tween()
+	tween2.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+
+	tween2.parallel().tween_property($robot, "scale", Vector2(15, 15), 0.5)
+	tween2.parallel().tween_property($Player, "scale", Vector2(19, 19), 0.5)
 func Robot_break():
+	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+
+	tween.parallel().tween_property($robot, "scale", Vector2(20, 20), 0.5)
+	tween.parallel().tween_property($Player, "scale", Vector2(14, 14), 0.5)
+
+	$CanvasLayer3.visible=true
+
+	$CanvasLayer3.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	$dialogue_box.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	get_tree().paused = true
 	$dialogue_box.start_dialogue("Robot: EXTERMINATE, EXTERMINATE, EXTERMINATE")
 	print("robot break")
-	$CanvasLayer3.visible=true
+	

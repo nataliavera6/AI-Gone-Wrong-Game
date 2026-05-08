@@ -2517,11 +2517,11 @@ mouse_filter = 2
 texture = SubResource("CanvasTexture_2poj3")
 
 [node name="Player" parent="." unique_id=85647776 instance=ExtResource("1_jjgbg")]
-position = Vector2(139, 317.99997)
-scale = Vector2(13.93, 13.93)
+position = Vector2(146, 280)
+scale = Vector2(19, 19)
 
 [node name="robot" parent="." unique_id=685473718 instance=ExtResource("2_bo1nx")]
-position = Vector2(1028, 299)
-scale = Vector2(15.68, 15.68)
+position = Vector2(1053, 274)
+scale = Vector2(15, 15)
 
 [node name="dialogue_box" parent="." unique_id=1785642636 instance=ExtResource("5_kry3j")]
