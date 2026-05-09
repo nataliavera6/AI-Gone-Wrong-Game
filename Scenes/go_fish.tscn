@@ -1,3 +1,4 @@
 [gd_scene format=3 uid="uid://ctv0v0nih6gxp"]
 
 [node name="GoFish" type="Node2D" unique_id=1543503165]
+position = Vector2(9, 6)

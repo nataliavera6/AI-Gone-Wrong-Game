@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://fckmxkmmf1yp"]
+
+[ext_resource type="Script" uid="uid://ck56j5mqwofes" path="res://go_fish_deck.gd" id="1_vqtpo"]
+
+[node name="goFishDeck" type="Node2D" unique_id=102939056]
+script = ExtResource("1_vqtpo")

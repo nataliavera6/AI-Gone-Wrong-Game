@@ -1,3 +1,25 @@
 [gd_scene format=3 uid="uid://ciibd3wic4kfb"]
 
+[ext_resource type="Script" uid="uid://b26gkswjx1cms" path="res://Scenes/go_fish_card.gd" id="1_t2ojk"]
+[ext_resource type="Texture2D" uid="uid://2kyus8u1ew4y" path="res://assets/Pixel Art Card Deck/Back Cards/Red.png" id="2_nnvfc"]
+[ext_resource type="Texture2D" uid="uid://hedyxqttjuar" path="res://assets/Pixel Art Card Deck/Clubs/2.png" id="3_wdbpx"]
+
 [node name="goFishCard" type="Node2D" unique_id=1174169187]
+script = ExtResource("1_t2ojk")
+
+[node name="Back" type="Sprite2D" parent="." unique_id=1423109042]
+z_index = 1
+position = Vector2(16, 14.999998)
+scale = Vector2(0.46639052, 0.41423064)
+texture = ExtResource("2_nnvfc")
+
+[node name="Front" type="Sprite2D" parent="." unique_id=2099098782]
+position = Vector2(16, 15)
+scale = Vector2(0.45261252, 0.41068155)
+texture = ExtResource("3_wdbpx")
+
+[node name="Control" type="Control" parent="." unique_id=767069102]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
