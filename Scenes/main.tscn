@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://s5p8nuuuv0tb" path="res://Scenes/dialogue_box.tscn" id="5_kry3j"]
 [ext_resource type="Texture2D" uid="uid://crkg6g06ly403" path="res://assets/floor (tiles)/cut_floor_green.png" id="6_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://bt8n63scy1q4k" path="res://assets/floor (tiles)/cut_floor_blue.png" id="7_jkdf5"]
+[ext_resource type="PackedScene" path="res://Scenes/memory.tscn" id="13_fdnlq"]
 
 [sub_resource type="Gradient" id="Gradient_fdnlq"]
 offsets = PackedFloat32Array(0, 0.31849316, 0.7123288)
@@ -2516,12 +2517,22 @@ offset_bottom = 682.0
 mouse_filter = 2
 texture = SubResource("CanvasTexture_2poj3")
 
-[node name="Player" parent="." unique_id=85647776 instance=ExtResource("1_jjgbg")]
+[node name="dialogue_box" parent="." unique_id=1785642636 instance=ExtResource("5_kry3j")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1727293353]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player" parent="HBoxContainer" unique_id=85647776 instance=ExtResource("1_jjgbg")]
 position = Vector2(146, 280)
 scale = Vector2(19, 19)
 
-[node name="robot" parent="." unique_id=685473718 instance=ExtResource("2_bo1nx")]
+[node name="Memory" parent="HBoxContainer" unique_id=1075067447 instance=ExtResource("13_fdnlq")]
+position = Vector2(422.93, 74.55)
+
+[node name="robot" parent="HBoxContainer" unique_id=685473718 instance=ExtResource("2_bo1nx")]
 position = Vector2(1053, 274)
 scale = Vector2(15, 15)
-
-[node name="dialogue_box" parent="." unique_id=1785642636 instance=ExtResource("5_kry3j")]

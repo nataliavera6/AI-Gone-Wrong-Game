@@ -1,6 +1,6 @@
 extends Node2D
 
-var count=0
+var count=2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -8,38 +8,49 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if count==500:
-		Global.Score=10
-		count+=1
-	elif count==100:
-		Global.Score=5
-	elif count==200:
-		Global.Score=6
-	elif count==300:
-		Global.Score=7
-	elif count==500:
-		Global.Score=20
+	#if count==500:
+		#Global.Score=10
+		#count+=1
+	#elif count==100:
+		#Global.Score=5
+	#elif count==200:
+		#Global.Score=6
+	#elif count==300:
+		#Global.Score=7
+	#elif count==500:
+		#Global.Score=20
 	#print(count)
-	if Global.Score==10:
+	if Global.Score==10 and count==1:
+		await get_tree().create_timer(0.3).timeout
+		count=2
 		Robot_break()
 		
-	elif Global.Score==5:
+	elif Global.Score==2 and count==2:
+		await get_tree().create_timer(0.3).timeout
 		print(Global.Score)
-		Robot_mad(Global.Score)
 		
-	elif Global.Score==6:
-		print(Global.Score)
 		Robot_mad(Global.Score)
+		count=3
 		
-	elif Global.Score==7:
+	elif Global.Score==3 and count==3:
+		await get_tree().create_timer(0.3).timeout
 		print(Global.Score)
 		Robot_mad(Global.Score)
-	elif Global.Score==20:
+		count=4
+	elif Global.Score==4 and count==4:
+		await get_tree().create_timer(0.3).timeout
+		print(Global.Score)
+		
+		Robot_mad(Global.Score)
+		count=10
+		
+	elif Global.Score==21:
 		get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
+		count=21
 	else:
 		pass
-	Global.Score=11
-	count+=1
+
+
 
 
 func Robot_mad(score):
@@ -57,16 +68,19 @@ func Robot_mad(score):
 
 	get_tree().paused = true
 
-	if score == 5:
+	if score == 2 and count==2:
 		$dialogue_box.start_dialogue("Robot: Human is winning")
-	elif score == 6:
+		count+=1
+	elif score == 3 and count==3:
 		$dialogue_box.start_dialogue("Robot: Human capacity is low, robot must win")
-	elif score == 7:
+		count+=1
+	elif score == 4 and count==4:
 		$CanvasLayer2.visible = true
 		$CanvasLayer.visible = false
 		$dialogue_box.start_dialogue("Robot: Unexpected output from human...EXTERMINATE")
+		count+=1
 
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(10).timeout
 	$CanvasLayer.visible = false
 	$CanvasLayer2.visible = false
 	var tween2 = create_tween()
