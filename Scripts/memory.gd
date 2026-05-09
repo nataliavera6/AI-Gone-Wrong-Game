@@ -116,6 +116,7 @@ func check_match():
 		open_cards.clear()
 
 		busy = false
+		Global.Score+=1
 
 
 	# NO MATCH
