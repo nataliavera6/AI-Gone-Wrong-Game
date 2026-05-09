@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://dlunwjbyi1s1i"]
+
+[ext_resource type="Script" uid="uid://30orf7todo8y" path="res://Scripts/memory_card.gd" id="1_cglpi"]
+[ext_resource type="Texture2D" uid="uid://bwe6adwsnteuh" path="res://assets/card_back.png" id="2_cglpi"]
+[ext_resource type="Texture2D" uid="uid://bq8o2xnswwno1" path="res://assets/Individual/With Border/2x/portrait-with-border19.png" id="3_3rmw8"]
+
+[sub_resource type="Animation" id="Animation_ajd4s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_djdy4"]
+resource_name = "turn_backward"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.100000024, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1, 1, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000005),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cglpi"]
+resource_name = "turn_backward2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1, 1, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099902175, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(-0.01, 1), Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rcui6"]
+resource_name = "turn_forward2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.20000005),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1, 1, -1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099902175, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(-0.01, 1), Vector2(-1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b3577"]
+_data = {
+&"RESET": SubResource("Animation_ajd4s"),
+&"turn_backward": SubResource("Animation_djdy4"),
+&"turn_backward2": SubResource("Animation_cglpi"),
+&"turn_forward2": SubResource("Animation_rcui6")
+}
+
+[node name="MemoryCard" type="Node2D" unique_id=2107842949]
+position = Vector2(20, 4)
+script = ExtResource("1_cglpi")
+metadata/_edit_group_ = true
+
+[node name="Back" type="Sprite2D" parent="." unique_id=1521555788]
+z_index = 1
+position = Vector2(16, 14.999998)
+scale = Vector2(0.2578125, 0.25781247)
+texture = ExtResource("2_cglpi")
+
+[node name="Front" type="Sprite2D" parent="." unique_id=679562552]
+position = Vector2(16, 15)
+scale = Vector2(1.0099542, 1.0091028)
+texture = ExtResource("3_3rmw8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1163424564]
+libraries/ = SubResource("AnimationLibrary_b3577")
+
+[node name="Control" type="Control" parent="." unique_id=445341455]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
