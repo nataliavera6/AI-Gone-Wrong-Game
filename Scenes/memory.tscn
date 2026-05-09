@@ -13,12 +13,4 @@ one_shot = true
 [node name="MemoryCard" parent="." unique_id=2107842949 instance=ExtResource("2_n8ywh")]
 visible = false
 
-[node name="Back" parent="MemoryCard" index="0" unique_id=1521555788]
-z_index = -1
-
-[node name="AnimationPlayer" parent="MemoryCard" index="2" unique_id=1163424564]
-active = false
-
 [connection signal="timeout" from="TurnBackFailedMatch" to="." method="_on_turn_back_failed_match_timeout"]
-
-[editable path="MemoryCard"]
