@@ -31,36 +31,8 @@ tracks/1/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_djdy4"]
-resource_name = "turn_backward"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Back:z_index")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.100000024, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-1, 1, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.20000005),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(-1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_cglpi"]
-resource_name = "turn_backward2"
+resource_name = "turn_backward"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -81,14 +53,14 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.099902175, 0.2),
+"times": PackedFloat32Array(0, 0.09989602, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-1, 1), Vector2(-0.01, 1), Vector2(-1, 1)]
+"values": [Vector2(1, 1), Vector2(0.01, 1), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_rcui6"]
-resource_name = "turn_forward2"
+resource_name = "turn_forward"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -97,7 +69,7 @@ tracks/0/path = NodePath("Back:z_index")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.20000005),
+"times": PackedFloat32Array(0, 0.13333334, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [1, 1, -1]
@@ -109,18 +81,17 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.099902175, 0.2),
+"times": PackedFloat32Array(0, 0.09989602, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-1, 1), Vector2(-0.01, 1), Vector2(-1, 1)]
+"values": [Vector2(1, 1), Vector2(0.01, 1), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b3577"]
 _data = {
 &"RESET": SubResource("Animation_ajd4s"),
-&"turn_backward": SubResource("Animation_djdy4"),
-&"turn_backward2": SubResource("Animation_cglpi"),
-&"turn_forward2": SubResource("Animation_rcui6")
+&"turn_backward": SubResource("Animation_cglpi"),
+&"turn_forward": SubResource("Animation_rcui6")
 }
 
 [node name="MemoryCard" type="Node2D" unique_id=2107842949]

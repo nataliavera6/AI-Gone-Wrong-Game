@@ -82,7 +82,7 @@ func card_selected(card):
 	if open_cards.size() >= 2:
 		return
 
-	card.get_node("AnimationPlayer").play("turn_forward2")
+	card.get_node("AnimationPlayer").play("turn_forward")
 	
 	card.is_open = true
 
@@ -128,7 +128,7 @@ func _on_turn_back_failed_match_timeout() -> void:
 
 	for card in open_cards:
 
-		card.get_node("AnimationPlayer").play("turn_backward2")
+		card.get_node("AnimationPlayer").play("turn_backward")
 
 		card.is_open = false
 
