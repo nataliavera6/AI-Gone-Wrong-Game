@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bhuv84tuks6al"]
+
+[ext_resource type="Script" uid="uid://grql74jykrr7" path="res://Scripts/memory.gd" id="1_ajd4s"]
+[ext_resource type="PackedScene" uid="uid://dlunwjbyi1s1i" path="res://Scenes/memory_card.tscn" id="2_n8ywh"]
+
+[node name="Memory" type="Node2D" unique_id=1075067447]
+script = ExtResource("1_ajd4s")
+
+[node name="TurnBackFailedMatch" type="Timer" parent="." unique_id=601114353]
+wait_time = 0.5
+one_shot = true
+
+[node name="MemoryCard" parent="." unique_id=2107842949 instance=ExtResource("2_n8ywh")]
+visible = false
+
+[node name="Back" parent="MemoryCard" index="0" unique_id=1521555788]
+z_index = -1
+
+[node name="AnimationPlayer" parent="MemoryCard" index="2" unique_id=1163424564]
+active = false
+
+[connection signal="timeout" from="TurnBackFailedMatch" to="." method="_on_turn_back_failed_match_timeout"]
+
+[editable path="MemoryCard"]
