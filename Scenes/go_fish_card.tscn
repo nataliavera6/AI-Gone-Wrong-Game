@@ -6,7 +6,7 @@
 
 [node name="goFishCard" type="Node2D" unique_id=1174169187]
 position = Vector2(133, 28.000004)
-scale = Vector2(1.6629869, 1.7559)
+scale = Vector2(3.0216367, 3.3759274)
 script = ExtResource("1_t2ojk")
 
 [node name="Back" type="Sprite2D" parent="." unique_id=1423109042]

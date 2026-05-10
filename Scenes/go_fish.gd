@@ -29,6 +29,9 @@ var robot_books = 0
 var player_turn = true
 var game_over = false
 
+var robot_score = 0
+
+
 func _ready():
 
 	create_deck()
@@ -38,7 +41,7 @@ func _ready():
 	check_books(player_hand, true)
 	check_books(robot_hand, false)
 
-	display_player_hand()
+	display_all_cards()
 
 	start_player_turn()
 
@@ -104,6 +107,13 @@ func draw_card():
 	return deck.pop_back()
 
 
+func display_all_cards():
+
+	display_player_hand()
+	display_robot_hand()
+	display_deck()
+
+
 func display_player_hand():
 
 	for child in $PlayerHand.get_children():
@@ -121,7 +131,41 @@ func display_player_hand():
 		$PlayerHand.add_child(card)
 
 
-func update_dropdown(): #Player can only ask for Ranks they already have on hand
+func display_robot_hand():
+
+	for child in $RobotHand.get_children():
+		child.queue_free()
+
+	for i in range(robot_hand.size()):
+
+		var card = Card.instantiate()
+
+		card.position = Vector2(i * 50, 80)
+
+		card.get_node("Back").z_index = 1
+
+		$RobotHand.add_child(card)
+
+
+func display_deck():
+
+	for child in $Deck.get_children():
+		child.queue_free()
+
+	if deck.is_empty():
+		return
+
+	var card = Card.instantiate()
+
+	var viewport_size = get_viewport_rect().size
+	card.global_position = viewport_size / 2
+
+	card.get_node("Front").visible = false
+
+	$Deck.add_child(card)
+
+
+func update_dropdown():
 
 	$ChooseRank.clear()
 
@@ -136,6 +180,7 @@ func update_dropdown(): #Player can only ask for Ranks they already have on hand
 			added_ranks.append(rank)
 
 			$ChooseRank.add_item(rank)
+
 
 func start_player_turn():
 
@@ -153,7 +198,7 @@ func start_player_turn():
 			check_game_over()
 			return
 
-	display_player_hand()
+	display_all_cards()
 
 	update_dropdown()
 
@@ -161,7 +206,7 @@ func start_player_turn():
 
 	$Ask.disabled = false
 
-	
+
 func _on_ask_pressed() -> void:
 
 	if !player_turn:
@@ -175,9 +220,9 @@ func _on_ask_pressed() -> void:
 	var selected_index = $ChooseRank.selected
 
 	var selected_rank = $ChooseRank.get_item_text(selected_index)
-	
+
 	$Label2.text = "You: Do you have " + selected_rank + "?"
-	
+
 	await get_tree().create_timer(3).timeout
 
 	player_ask(selected_rank)
@@ -203,13 +248,12 @@ func player_ask(rank):
 
 		check_books(player_hand, true)
 
-		display_player_hand()
+		display_all_cards()
 
 		check_game_over()
 
 		await get_tree().create_timer(1.0).timeout
 
-		# Player goes again
 		start_player_turn()
 
 	else:
@@ -239,6 +283,8 @@ func robot_turn():
 			check_game_over()
 			return
 
+	display_all_cards()
+
 	var chosen_card = robot_hand.pick_random()
 
 	var chosen_rank = chosen_card["rank"]
@@ -265,13 +311,12 @@ func robot_turn():
 
 		check_books(robot_hand, false)
 
-		display_player_hand()
+		display_all_cards()
 
 		check_game_over()
 
 		await get_tree().create_timer(1.0).timeout
 
-		# Robot goes again
 		robot_turn()
 
 	else:
@@ -296,7 +341,7 @@ func go_fish(hand, is_player):
 
 	check_books(hand, is_player)
 
-	display_player_hand()
+	display_all_cards()
 
 	check_game_over()
 
@@ -306,6 +351,7 @@ func go_fish(hand, is_player):
 		robot_turn()
 	else:
 		start_player_turn()
+
 
 func hand_has_rank(hand, rank):
 
@@ -333,6 +379,8 @@ func check_books(hand, is_player):
 	for rank in counts.keys():
 
 		if counts[rank] >= 4:
+			if is_player: #creao que el score update va aquí
+				Global.Score += 1
 
 			var cards_to_remove = []
 
@@ -355,8 +403,11 @@ func check_books(hand, is_player):
 			else:
 
 				robot_books += 1
+				
+				Global.robot_score += 1
 
 				$Label2.text = "Robot completed a book of " + rank + "s!"
+
 
 func check_game_over():
 
@@ -371,6 +422,8 @@ func check_game_over():
 			$Label.text = "PLAYER WINS!"
 
 		elif robot_books > player_books:
+			
+			Global.robot_score += 2
 
 			$Label.text = "ROBOT WINS!"
 

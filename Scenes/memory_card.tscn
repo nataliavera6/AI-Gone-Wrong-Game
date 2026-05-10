@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlunwjbyi1s1i"]
 
-[ext_resource type="Script" path="res://Scripts/memory_card.gd" id="1_cglpi"]
+[ext_resource type="Script" uid="uid://30orf7todo8y" path="res://Scripts/memory_card.gd" id="1_cglpi"]
 [ext_resource type="Texture2D" uid="uid://bwe6adwsnteuh" path="res://assets/card_back.png" id="2_cglpi"]
 [ext_resource type="Texture2D" uid="uid://bq8o2xnswwno1" path="res://assets/Individual/With Border/2x/portrait-with-border19.png" id="3_3rmw8"]
 

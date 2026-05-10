@@ -6,7 +6,8 @@ var count=2
 var curr_minigame = "match"
 
 func _ready() -> void:
-	pass # Replace with function body.
+	$HBoxContainer/Memory.visible = true
+	$HBoxContainer/GoFish.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,42 +24,47 @@ func _process(delta: float) -> void:
 	#elif count==500:
 		#Global.Score=20
 	#print(count)
-	if Global.Score==10 and count==1:
+	if Global.Score >= 10 and count == 1 and Global.robot_score <= Global.Score:
 		await get_tree().create_timer(0.3).timeout
 		count=2
 		Robot_break()
 		#switch game
 		switch_minigame()
 		
-	elif Global.Score==2 and count==2:
+	elif Global.Score == 2 and count == 2 and Global.robot_score <= Global.Score:
 		await get_tree().create_timer(0.3).timeout
 		print(Global.Score)
-		
+
 		Robot_mad(Global.Score)
-		count=3
-		#switch game
+		count = 3
+
+		# switch game
 		switch_minigame()
-		
-	elif Global.Score==3 and count==3:
+
+	elif Global.Score == 3 and count == 3 and Global.robot_score <= Global.Score:
 		await get_tree().create_timer(0.3).timeout
 		print(Global.Score)
+
 		Robot_mad(Global.Score)
-		count=4
-		#switch game
+		count = 4
+
+		# switch game
 		switch_minigame()
-		
-	elif Global.Score==4 and count==4:
+
+	elif Global.Score == 4 and count == 4 and Global.robot_score <= Global.Score:
 		await get_tree().create_timer(0.3).timeout
 		print(Global.Score)
-		
+
 		Robot_mad(Global.Score)
-		count=10
-		#switch game
+		count = 10
+
+		# switch game
 		switch_minigame()
-		
-	elif Global.Score==21:
+
+	elif Global.Score >= 21:
+		count = 21
 		get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
-		count=21
+
 	else:
 		pass
 
@@ -127,19 +133,19 @@ func switch_minigame():
 	
 func match_off():
 	#toggle all match visibility off
-	pass
+	$HBoxContainer/Memory.visible = false
 	
 func goFish_off():
 	#toggle all goFish visibility off
-	pass
+	$HBoxContainer/GoFish.visible = false
 	
 func match_activate():
 	# toggle all match visibility on
-	pass
+	$HBoxContainer/Memory.visible = true
 	
 func goFish_activate():
 	# toggle all go Fish visibility on
-	pass
+	$HBoxContainer/GoFish.visible = true
 	
 #minigame logic
 #toggle game visibility on and off so progress is "saved"

@@ -50,6 +50,7 @@ offset_left = 3.0
 offset_top = 11.0
 offset_right = 43.0
 offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="Ask" type="Button" parent="." unique_id=473858054]
 offset_left = 18.0
@@ -66,6 +67,12 @@ offset_left = 390.0
 offset_top = -3.0
 offset_right = 430.0
 offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Deck" type="Node2D" parent="." unique_id=1367310160]
+
+[node name="RobotHand" type="Node2D" parent="." unique_id=1914139792]
+position = Vector2(226, 21)
 
 [connection signal="pressed" from="ChooseRank" to="." method="_on_choose_rank_pressed"]
 [connection signal="pressed" from="Ask" to="." method="_on_ask_pressed"]
