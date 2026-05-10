@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
+#robot script
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 
 func _physics_process(delta: float) -> void:
+		
 	$AnimatedSprite2D.play("default")
 	# Add the gravity.
 	#if not is_on_floor():

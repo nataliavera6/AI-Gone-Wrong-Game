@@ -1,18 +1,19 @@
-[gd_scene format=4 uid="uid://155xx7s6y6ta"]
+[gd_scene format=4 uid="uid://ypyn1ox8rli2"]
 
 [ext_resource type="Script" uid="uid://cidkyo67efp8c" path="res://Scenes/main.gd" id="1_8gbba"]
-[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://dmht7qv6i78vv" path="res://Scenes/robot.tscn" id="2_bo1nx"]
-[ext_resource type="Shader" uid="uid://bkkw0bc24krjm" path="res://Scenes/main.gdshader" id="2_jjvhh"]
+[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" path="res://Scenes/robot.tscn" id="2_bo1nx"]
+[ext_resource type="Shader" path="res://Scenes/main.gdshader" id="2_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://dxg8rx3fow14f" path="res://assets/fvg3Qa.png.webp" id="3_6iyac"]
-[ext_resource type="Shader" uid="uid://7awssiycg4e0" path="res://Scenes/mainred.gdshader" id="3_d1ilt"]
+[ext_resource type="Shader" path="res://Scenes/mainred.gdshader" id="3_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://m0ev3syt0kuo" path="res://assets/floor (tiles)/cut_floor_pink.png" id="3_hptm8"]
 [ext_resource type="Texture2D" uid="uid://c1op4etqydd3r" path="res://assets/floor (tiles)/cut_floor_violet.png" id="4_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://m1j56qvjuw44" path="res://assets/floor (tiles)/cut_floor_orange.png" id="5_6iyac"]
-[ext_resource type="PackedScene" uid="uid://s5p8nuuuv0tb" path="res://Scenes/dialogue_box.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" path="res://Scenes/dialogue_box.tscn" id="5_kry3j"]
 [ext_resource type="Texture2D" uid="uid://crkg6g06ly403" path="res://assets/floor (tiles)/cut_floor_green.png" id="6_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://bt8n63scy1q4k" path="res://assets/floor (tiles)/cut_floor_blue.png" id="7_jkdf5"]
-[ext_resource type="PackedScene" path="res://Scenes/memory.tscn" id="13_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://bhuv84tuks6al" path="res://Scenes/memory.tscn" id="13_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://ctv0v0nih6gxp" path="res://Scenes/go_fish.tscn" id="14_jkdf5"]
 
 [sub_resource type="Gradient" id="Gradient_fdnlq"]
 offsets = PackedFloat32Array(0, 0.31849316, 0.7123288)
@@ -2536,3 +2537,5 @@ position = Vector2(422.93, 74.55)
 [node name="robot" parent="HBoxContainer" unique_id=685473718 instance=ExtResource("2_bo1nx")]
 position = Vector2(1053, 274)
 scale = Vector2(15, 15)
+
+[node name="GoFish" parent="HBoxContainer" unique_id=1543503165 instance=ExtResource("14_jkdf5")]
