@@ -12,91 +12,137 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$matches_man.text="Matches: %s" % Global.matchScore
+	$matchesrobot.text="Matches: %s" % Global.robot_matchScore
+	$matches_man2.text="Steals: %s" % (Global.tempScore-Global.matchScore)
+	$matchesrobot2.text="Steals: %s" % (Global.robot_score-Global.robot_matchScore)
+	if Global.Score>Global.robot_score:
+		$winingstateman.text="winning"
+		$winningstaterobot.text="losing"
+	elif Global.Score<Global.robot_score:
+		$winingstateman.text="losing"
+		$winningstaterobot.text="winning"
+	else:
+		$winingstateman.text="tied"
+		$winningstaterobot.text="tied"
 	#if count==500:
-		#Global.Score=10
+		#Global.temoScore=10
 		#count+=1
 	#elif count==100:
-		#Global.Score=5
+		#Global.temoScore=5
 	#elif count==200:
-		#Global.Score=6
+		#Global.temoScore=6
 	#elif count==300:
-		#Global.Score=7
+		#Global.temoScore=7
 	#elif count==500:
-		#Global.Score=20
+		#Global.tempScore=20
 	#print(count)
-	if Global.Score >= 10 and count == 1 and Global.robot_score <= Global.Score:
+	#if Global.tempScore == -1 and Global.robot_score <= Global.tempScore:
+		#await get_tree().create_timer(0.3).timeout
+		#count=2
+		#Robot_break()
+	#
+		#print("-1 score")
+		##switch game
+	#
+	if Global.robot_matchScore >= 11 or Global.Score==-1:
+		get_tree().change_scene_to_file("res://Scenes/LoseScreen.tscn")
+	elif (Global.matchScore >= 11 and curr_minigame=="match") or Global.Score==-1:
+		Global.tempScore=-1
+		count = 11
 		await get_tree().create_timer(0.3).timeout
 		count=2
 		Robot_break()
-		#switch game
-		switch_minigame()
+	
+		print("-1 score")
+		#get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
+	elif Global.tempScore>0 and Global.Score!=Global.tempScore and Global.robot_score <= Global.tempScore:
 		
-	elif Global.Score == 2 and count == 2 and Global.robot_score <= Global.Score:
-		await get_tree().create_timer(0.3).timeout
-		print(Global.Score)
+		if count==3  :
+			await get_tree().create_timer(0.3).timeout
+			print(Global.tempScore)
+			count = 4
+			Robot_mad(3)
+			
+			print("3 score")
+		
+			# switch game
+			#switch_minigame()
+		elif count==2 :
+			await get_tree().create_timer(0.3).timeout
+			print(Global.tempScore)
+			count = 3
+			Robot_mad(2)
+			
+		
+			print("2 score")
+			# switch game
+			#switch_minigame()
+		elif count==4:
+			await get_tree().create_timer(0.3).timeout
+			print(Global.tempScore)
+			count=5
+			Robot_mad(4)
+			
+		
+			print("4 score")
+			# switch game
+			#switch_minigame()
+		
 
-		Robot_mad(Global.Score)
-		count = 3
+		
 
-		# switch game
-		switch_minigame()
 
-	elif Global.Score == 3 and count == 3 and Global.robot_score <= Global.Score:
-		await get_tree().create_timer(0.3).timeout
-		print(Global.Score)
 
-		Robot_mad(Global.Score)
-		count = 4
 
-		# switch game
-		switch_minigame()
 
-	elif Global.Score == 4 and count == 4 and Global.robot_score <= Global.Score:
-		await get_tree().create_timer(0.3).timeout
-		print(Global.Score)
-
-		Robot_mad(Global.Score)
-		count = 10
-
-		# switch game
-		switch_minigame()
-
-	elif Global.Score >= 21:
-		count = 21
-		get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
 
 	else:
 		pass
 
 
 func Robot_mad(score):
+
 	var tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 
 	tween.parallel().tween_property($robot, "scale", Vector2(20, 20), 0.5)
 	tween.parallel().tween_property($Player, "scale", Vector2(14, 14), 0.5)
-
+	
 	$CanvasLayer.visible = true
 
 	$CanvasLayer.process_mode = Node.PROCESS_MODE_ALWAYS
 	$CanvasLayer2.process_mode = Node.PROCESS_MODE_ALWAYS
 	$dialogue_box.process_mode = Node.PROCESS_MODE_ALWAYS
-
+	
 	get_tree().paused = true
+	if score!=5:
+		switch_minigame()
+		await get_tree().create_timer(0.05).timeout
+		switch_minigame()
+		await get_tree().create_timer(0.05).timeout
+		switch_minigame()
 
-	if score == 2 and count==2:
-		$dialogue_box.start_dialogue("Robot: Human is winning")
-		count+=1
-	elif score == 3 and count==3:
+	
+	if score == 3 :
 		$dialogue_box.start_dialogue("Robot: Human capacity is low, robot must win")
-		count+=1
-	elif score == 4 and count==4:
+	
+		Global.Score=Global.tempScore
+	elif score == 2 :
+		$matchesrobot2.visible=true
+		$matches_man2.visible=true
+		$dialogue_box.start_dialogue("Robot: Human is winning")
+		
+		Global.Score=Global.tempScore
+	elif score ==4 :
 		$CanvasLayer2.visible = true
 		$CanvasLayer.visible = false
 		$dialogue_box.start_dialogue("Robot: Unexpected output from human...EXTERMINATE")
-		count+=1
+	
+	Global.Score=Global.tempScore
+	
 
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(3).timeout
 	$CanvasLayer.visible = false
 	$CanvasLayer2.visible = false
 	var tween2 = create_tween()
@@ -104,6 +150,8 @@ func Robot_mad(score):
 
 	tween2.parallel().tween_property($robot, "scale", Vector2(15, 15), 0.5)
 	tween2.parallel().tween_property($Player, "scale", Vector2(19, 19), 0.5)
+	if count==5:
+		count=4
 	
 func Robot_break():
 	var tween = create_tween()
@@ -121,15 +169,23 @@ func Robot_break():
 	get_tree().paused = true
 	$dialogue_box.start_dialogue("Robot: EXTERMINATE, EXTERMINATE, EXTERMINATE")
 	print("robot break")
+	await get_tree().create_timer(4).timeout
+	get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
 	
 func switch_minigame():
+	#Global.temoScore=0
+	#Global.robot_score=0
+	#
+	Global.switched=true
 	if curr_minigame == "match":
 		match_off()
 		goFish_activate()
+		curr_minigame = "go fish"
 		
 	elif curr_minigame == "go fish":
 		goFish_off()
 		match_activate()
+		curr_minigame = "match"
 	
 func match_off():
 	#toggle all match visibility off

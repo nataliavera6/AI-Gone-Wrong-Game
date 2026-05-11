@@ -45,7 +45,22 @@ var Textures = [
 
 func _ready() -> void:
 
-	for t in Textures:
+	#for t in Textures:
+#
+		#var c1 = Card.instantiate()
+		#c1.get_node("Front").texture = t
+#
+		#var c2 = Card.instantiate()
+		#c2.get_node("Front").texture = t
+#
+		#cards.append(c1)
+		#cards.append(c2)
+#
+	#cards.shuffle()
+	var needed_pairs = (ROW * COL) / 2
+
+	for i in range(needed_pairs):
+		var t = Textures[i]
 
 		var c1 = Card.instantiate()
 		c1.get_node("Front").texture = t
@@ -57,7 +72,6 @@ func _ready() -> void:
 		cards.append(c2)
 
 	cards.shuffle()
-
 	for row in range(ROW):
 		for col in range(COL):
 
@@ -67,7 +81,7 @@ func _ready() -> void:
 				return
 
 			var c = cards[index]
-
+			
 			c.position = Vector2(32, 32) + Vector2(col * 50, row * 50)
 
 			add_child(c)
@@ -135,9 +149,13 @@ func check_match():
 		card2.matched = true
 
 		if player_turn:
-			Global.Score += 1
+			Global.tempScore += 1
+			Global.matchScore+=1
 		else:
-			Global.robot_score += 1
+			Global.robot_score+=1
+			Global.robot_matchScore+=1
+			
+			#Global.robot_score += 1
 
 		open_cards.clear()
 		busy = false

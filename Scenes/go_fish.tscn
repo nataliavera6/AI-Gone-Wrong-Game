@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ctv0v0nih6gxp"]
+[gd_scene format=3 uid="uid://dd83j56mtn18t"]
 
 [ext_resource type="Script" uid="uid://iecqw7cd8k1a" path="res://Scenes/go_fish.gd" id="1_ioiw8"]
-[ext_resource type="PackedScene" uid="uid://ciibd3wic4kfb" path="res://Scenes/go_fish_card.tscn" id="2_y3v5o"]
+[ext_resource type="PackedScene" path="res://Scenes/go_fish_card.tscn" id="2_y3v5o"]
 
 [node name="GoFish" type="Node2D" unique_id=1543503165]
 position = Vector2(9, 6)

@@ -233,6 +233,7 @@ func player_ask(rank):
 	if hand_has_rank(robot_hand, rank):
 
 		$Label.text = "Robot has the card!"
+		Global.tempScore+=1
 
 		var cards_to_transfer = []
 
@@ -271,7 +272,9 @@ func robot_turn():
 		return
 
 	player_turn = false
-
+	#if Global.switched==true:
+		#Global.switched=false
+		#player_turn=true
 	$Ask.disabled = true
 
 	if robot_hand.is_empty():
@@ -296,7 +299,7 @@ func robot_turn():
 	if hand_has_rank(player_hand, chosen_rank):
 
 		$Label2.text = "You had the card!"
-
+		Global.robot_score+=1
 		var cards_to_transfer = []
 
 		for card in player_hand:
@@ -380,7 +383,7 @@ func check_books(hand, is_player):
 
 		if counts[rank] >= 4:
 			if is_player: #creao que el score update va aquí
-				Global.Score += 1
+				Global.tempScore += 1
 
 			var cards_to_remove = []
 
@@ -396,7 +399,7 @@ func check_books(hand, is_player):
 
 				player_books += 1
 
-				Global.Score += 1
+				Global.tempScore += 1
 
 				$Label2.text = "You completed a book of " + rank + "s!"
 
@@ -417,13 +420,14 @@ func check_game_over():
 
 		if player_books > robot_books:
 
-			Global.Score += 2
+			Global.tempScore = -1
 
 			$Label.text = "PLAYER WINS!"
+			
 
 		elif robot_books > player_books:
 			
-			Global.robot_score += 2
+			Global.robot_score =-1
 
 			$Label.text = "ROBOT WINS!"
 

@@ -33,4 +33,5 @@ func _process(delta):
 
 		await get_tree().create_timer(2).timeout
 		dialogue_box.visible = false
-		get_tree().paused = false
+		if get_tree()!=null:
+			get_tree().paused = false
