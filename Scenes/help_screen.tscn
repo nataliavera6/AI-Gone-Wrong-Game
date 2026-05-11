@@ -1,9 +1,24 @@
 [gd_scene format=3 uid="uid://b54sp53vntr8f"]
 
 [ext_resource type="Script" uid="uid://c5o2hekyf8pfo" path="res://Scripts/help_screen.gd" id="1_ag0tr"]
+[ext_resource type="Texture2D" uid="uid://bgt607djncgas" path="res://assets/backgroung.png" id="2_3mbpc"]
 [ext_resource type="Texture2D" uid="uid://cg87t1sjbhgej" path="res://assets/button.png" id="2_7iiir"]
+[ext_resource type="Shader" uid="uid://bkkw0bc24krjm" path="res://Scenes/main.gdshader" id="4_jks8t"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_i44y6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jg43e"]
+shader = ExtResource("4_jks8t")
+
+[sub_resource type="Gradient" id="Gradient_j35mf"]
+offsets = PackedFloat32Array(0, 0.31849316, 0.7123288)
+colors = PackedColorArray(1, 1, 1, 1, 0.22490484, 0.22490484, 0.22490484, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pmwbl"]
+gradient = SubResource("Gradient_j35mf")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jmmxx"]
+diffuse_texture = SubResource("GradientTexture1D_pmwbl")
 
 [node name="HelpScreen" type="Node" unique_id=735013264]
 script = ExtResource("1_ag0tr")
@@ -15,6 +30,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_i44y6")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1337926019]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3mbpc")
 
 [node name="StartButton" type="TextureButton" parent="." unique_id=1297313844]
 anchors_preset = 7
@@ -35,6 +58,38 @@ layout_mode = 0
 offset_right = 205.0
 offset_bottom = 64.0
 text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=192606324]
+material = SubResource("ShaderMaterial_jg43e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_jmmxx")
+
+[node name="Label" type="Label" parent="." unique_id=131338734]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -608.5
+offset_right = 608.5
+offset_bottom = 432.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.30507714, 0.30507717, 0.30507705, 1)
+theme_override_constants/line_spacing = 16
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 70
+text = "Fight against the robots
+WITH HUMAN CARD GAMES
+
+CAREFUL
+ the robot doesn't play fair "
 horizontal_alignment = 1
 vertical_alignment = 1
 

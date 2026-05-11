@@ -14,6 +14,12 @@ func _process(delta: float) -> void:
 
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	Global.Score = 0 
+	Global.robot_score = 0
+	Global.tempScore = 0
+	Global.matchScore = 0 
+	Global.robot_matchScore = 0
+	Global.switched = false
 
 
 func _on_help_button_pressed() -> void:

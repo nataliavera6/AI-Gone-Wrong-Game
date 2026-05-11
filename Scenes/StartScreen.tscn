@@ -2,8 +2,36 @@
 
 [ext_resource type="Script" uid="uid://bu0axw13ub4e7" path="res://Scripts/start_screen.gd" id="1_0on6r"]
 [ext_resource type="Texture2D" uid="uid://cg87t1sjbhgej" path="res://assets/button.png" id="1_ko4ly"]
+[ext_resource type="Texture2D" uid="uid://bgt607djncgas" path="res://assets/backgroung.png" id="2_pmwbl"]
+[ext_resource type="Texture2D" uid="uid://hedyxqttjuar" path="res://assets/Pixel Art Card Deck/Clubs/2.png" id="3_2n7fw"]
+[ext_resource type="Texture2D" uid="uid://d03nbqa0jwmjy" path="res://assets/Pixel Art Card Deck/Hearts/4.png" id="4_es5ds"]
+[ext_resource type="Texture2D" uid="uid://60gaqs63pbjb" path="res://assets/Pixel Art Card Deck/Clubs/5.png" id="5_45r57"]
+[ext_resource type="Texture2D" uid="uid://iekx0jtoekor" path="res://assets/Pixel Art Card Deck/Hearts/7.png" id="6_c632w"]
+[ext_resource type="Texture2D" uid="uid://dogag3aarhr0q" path="res://assets/Pixel Art Card Deck/Clubs/8.png" id="7_85jv8"]
+[ext_resource type="Texture2D" uid="uid://rjjvali30a7u" path="res://assets/Individual/With Border/5x/portrait-with-border1.png" id="8_33qfa"]
+[ext_resource type="Texture2D" uid="uid://bajbprbbehn3x" path="res://assets/Individual/With Border/5x/portrait-with-border4.png" id="9_vdff6"]
+[ext_resource type="Texture2D" uid="uid://bftel7t2ib6ic" path="res://assets/Individual/With Border/5x/portrait-with-border2.png" id="10_x1bun"]
+[ext_resource type="Texture2D" uid="uid://dmbbwwfxowkaj" path="res://assets/Individual/With Border/5x/portrait-with-border3.png" id="11_3o1n8"]
+[ext_resource type="Texture2D" uid="uid://d0lgprk2oxsa" path="res://assets/Individual/With Border/5x/portrait-with-border9.png" id="12_o5hey"]
+[ext_resource type="Texture2D" uid="uid://bgqdpjvkf0p1j" path="res://assets/Individual/With Border/5x/portrait-with-border7.png" id="13_wgi77"]
+[ext_resource type="Texture2D" uid="uid://dwefekdij0656" path="res://assets/Individual/With Border/5x/portrait-with-border5.png" id="14_rrhuo"]
+[ext_resource type="Texture2D" uid="uid://bbup4aknuq5jj" path="res://assets/Individual/With Border/5x/portrait-with-border8.png" id="15_w7qh8"]
+[ext_resource type="Shader" uid="uid://bkkw0bc24krjm" path="res://Scenes/main.gdshader" id="16_haecg"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_vau3p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3k7qp"]
+shader = ExtResource("16_haecg")
+
+[sub_resource type="Gradient" id="Gradient_rddmi"]
+offsets = PackedFloat32Array(0, 0.31849316, 0.7123288)
+colors = PackedColorArray(1, 1, 1, 1, 0.22490484, 0.22490484, 0.22490484, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pmwbl"]
+gradient = SubResource("Gradient_rddmi")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fxtvi"]
+diffuse_texture = SubResource("GradientTexture1D_pmwbl")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gjne2"]
 
 [node name="Start" type="Node" unique_id=1221203061]
 script = ExtResource("1_0on6r")
@@ -14,7 +42,134 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_vau3p")
+texture = ExtResource("2_pmwbl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=335377979]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -64.0
+offset_right = 310.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1226392521]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2" unique_id=1062368426]
+layout_mode = 2
+texture = ExtResource("3_2n7fw")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer2" unique_id=1396996682]
+layout_mode = 2
+texture = ExtResource("4_es5ds")
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer2" unique_id=1845818486]
+layout_mode = 2
+texture = ExtResource("5_45r57")
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer2" unique_id=417451633]
+layout_mode = 2
+texture = ExtResource("6_c632w")
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer2" unique_id=813243436]
+layout_mode = 2
+texture = ExtResource("7_85jv8")
+
+[node name="TextureRect6" type="TextureRect" parent="VBoxContainer2" unique_id=1844746093]
+layout_mode = 2
+texture = ExtResource("6_c632w")
+
+[node name="TextureRect7" type="TextureRect" parent="VBoxContainer2" unique_id=1825952531]
+layout_mode = 2
+texture = ExtResource("7_85jv8")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="." unique_id=519187448]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -61.0
+offset_bottom = 675.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer3" unique_id=889067717]
+layout_mode = 2
+texture = ExtResource("8_33qfa")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer3" unique_id=1031394627]
+layout_mode = 2
+texture = ExtResource("9_vdff6")
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer3" unique_id=903715959]
+layout_mode = 2
+texture = ExtResource("10_x1bun")
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer3" unique_id=1267364833]
+layout_mode = 2
+texture = ExtResource("11_3o1n8")
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer3" unique_id=1074481553]
+layout_mode = 2
+texture = ExtResource("12_o5hey")
+
+[node name="TextureRect6" type="TextureRect" parent="VBoxContainer3" unique_id=1314250126]
+layout_mode = 2
+texture = ExtResource("13_wgi77")
+
+[node name="TextureRect7" type="TextureRect" parent="VBoxContainer3" unique_id=1537754204]
+layout_mode = 2
+texture = ExtResource("14_rrhuo")
+
+[node name="TextureRect8" type="TextureRect" parent="VBoxContainer3" unique_id=1907594557]
+layout_mode = 2
+texture = ExtResource("8_33qfa")
+
+[node name="TextureRect9" type="TextureRect" parent="VBoxContainer3" unique_id=1125598397]
+layout_mode = 2
+texture = ExtResource("15_w7qh8")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=239695040]
+material = SubResource("ShaderMaterial_3k7qp")
+offset_left = 576.0
+offset_right = 1181.0
+offset_bottom = 682.0
+mouse_filter = 2
+texture = SubResource("CanvasTexture_fxtvi")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1066519130]
+modulate = Color(0.64715415, 0.6680483, 0.6858141, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = 1.9200134
+offset_right = 113.0
+offset_bottom = 222.91998
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_gjne2")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1275784687]
+modulate = Color(0.7809435, 0.6340542, 0.47682828, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = 1.9200134
+offset_right = -3.0
+offset_bottom = 222.91998
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_gjne2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1456079122]
 anchors_preset = 8
@@ -23,9 +178,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -102.0
-offset_top = -100.0
+offset_top = 1.1000061
 offset_right = 102.0
-offset_bottom = 100.0
+offset_bottom = 201.1001
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -69,17 +224,23 @@ text = "End"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=335377979]
-anchors_preset = 7
+[node name="Label" type="Label" parent="." unique_id=2137040098]
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -310.0
-offset_top = -64.0
-offset_right = 310.0
+offset_left = -167.0
+offset_right = 167.0
+offset_bottom = 294.0
 grow_horizontal = 2
-grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0.35719082, 0.35719085, 0.3571908, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_y = 11
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 70
+text = "Robots 
+vs
+Humanity"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]

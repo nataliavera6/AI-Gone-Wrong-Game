@@ -2,8 +2,25 @@
 
 [ext_resource type="Script" uid="uid://blxk2ghyolk25" path="res://Scripts/end_screen.gd" id="1_2ohhu"]
 [ext_resource type="Texture2D" uid="uid://cg87t1sjbhgej" path="res://assets/button.png" id="1_gcms0"]
+[ext_resource type="Texture2D" uid="uid://bgt607djncgas" path="res://assets/backgroung.png" id="2_3gukv"]
+[ext_resource type="Shader" uid="uid://bkkw0bc24krjm" path="res://Scenes/main.gdshader" id="3_jh5rx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2ohhu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d234m"]
+shader = ExtResource("3_jh5rx")
+
+[sub_resource type="Gradient" id="Gradient_tslor"]
+offsets = PackedFloat32Array(0, 0.31849316, 0.7123288)
+colors = PackedColorArray(1, 1, 1, 1, 0.22490484, 0.22490484, 0.22490484, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k4q1k"]
+gradient = SubResource("Gradient_tslor")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ypcfy"]
+diffuse_texture = SubResource("GradientTexture1D_k4q1k")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_51rpj"]
 
 [node name="End" type="Node" unique_id=1221203061]
 script = ExtResource("1_2ohhu")
@@ -17,6 +34,52 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_2ohhu")
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=229145030]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3gukv")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=421541406]
+material = SubResource("ShaderMaterial_d234m")
+offset_left = 576.0
+offset_right = 1181.0
+offset_bottom = 682.0
+mouse_filter = 2
+texture = SubResource("CanvasTexture_ypcfy")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1115341857]
+modulate = Color(0.64715415, 0.6680483, 0.6858141, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = 1.9200134
+offset_right = 113.0
+offset_bottom = 222.91998
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_51rpj")
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=1550934099]
+modulate = Color(0.7809435, 0.6340542, 0.47682828, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = 1.9200134
+offset_right = -3.0
+offset_bottom = 222.91998
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_51rpj")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1456079122]
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,9 +87,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -102.0
-offset_top = -100.0
-offset_right = 102.0
-offset_bottom = 100.0
+offset_top = 7.3399963
+offset_right = 102.00012
+offset_bottom = 207.34009
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -39,7 +102,7 @@ texture_normal = ExtResource("1_gcms0")
 layout_mode = 0
 offset_right = 205.0
 offset_bottom = 64.0
-text = "Main"
+text = "Start Screen"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -80,6 +143,23 @@ offset_top = -64.0
 offset_right = 310.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Label" type="Label" parent="." unique_id=47195454]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -167.0
+offset_right = 167.0
+offset_bottom = 294.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.35719082, 0.35719085, 0.3571908, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_y = 11
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 70
+text = "It's a
+Tie"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
